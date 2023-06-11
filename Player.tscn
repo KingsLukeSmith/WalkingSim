@@ -1,8 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dejr2c2rgdpv0"]
+[gd_scene load_steps=6 format=3 uid="uid://dejr2c2rgdpv0"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_5v886"]
+[ext_resource type="Texture2D" uid="uid://iqnmuoay5ptr" path="res://Textures/Green/texture_10.png" id="2_bh4nc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_606dk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nswb0"]
+albedo_texture = ExtResource("2_bh4nc")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g5v3i"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_5v886")
@@ -16,3 +24,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65381, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_nswb0")
+mesh = SubResource("CapsuleMesh_g5v3i")
